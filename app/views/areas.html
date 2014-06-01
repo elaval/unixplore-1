@@ -71,7 +71,7 @@
             <div class="form-group">
               <label class="col-md-7 control-label">Colores por</label>
               <div class="col-md-5">
-                <select type="text" class="form-control" ng-model="areas.colorAttribute" ng-options="obj for obj in areas.colorOptions">
+                <select type="text" class="form-control" ng-model="areas.colorAttribute" ng-options="obj.value as obj.label for obj in areas.colorOptions">
                 </select>
               </div>
             </div> <!-- Selector de categorías (colores) -->

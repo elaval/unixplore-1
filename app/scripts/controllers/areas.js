@@ -41,7 +41,12 @@ angular.module('fondecytApp')
   };
 
   // Opciones para categorización pro colores
-  this.colorOptions = ['genero', 'dependencia', 'ano_ficha'];
+  this.colorOptions = [
+    {label:'Genero', value:'genero'},
+    {label:'Dependencia', value:'dependencia'},
+    {label:'Año en la carrera', value:'agnosEnCarrera'},
+    {label:'Carrera', value:'carrera'}
+  ];
   this.colorAttribute = 'genero';
 
   this.agnoIngresoOptions = [
@@ -230,6 +235,17 @@ angular.module('fondecytApp')
   };
 
   /**
+   * Initial setting or modification of attributes in  data set 
+   */ 
+  var dataSetup = function(data) {
+    angular.forEach(data, function(d) {
+      if (d.agnosEnCarrera >= 7) {
+        d.agnosEnCarrera = '7 o más'
+      }
+    })
+  }
+
+  /**
    * @ngdoc function
    * @name fondecytApp.AreasDataService:areas
    * @methodOf fondecytApp.AreasDataService
@@ -290,7 +306,7 @@ angular.module('fondecytApp')
       if (agnoEnCarrera == 'todos') {
         accepted =  accepted && true;
       } else if (agnoEnCarrera == '7 o más') {
-        accepted =  accepted && (d.agnosEnCarrera >= 7);
+        accepted =  accepted && ((d.agnosEnCarrera >= 7) || (d.agnosEnCarrera >= '7 o más'));
       } else {
         accepted =  accepted && (agnoEnCarrera == d.agnosEnCarrera);
       } 
@@ -326,6 +342,7 @@ angular.module('fondecytApp')
         // Load data file  
         var datafile = estudiantesPorAreaDataDir+areaFile;
         d3.tsv(datafile, function(error, data) {
+          dataSetup(data);
           estudiantesPorCarreraData[carrera] = startupFilter(data);
 
           // Fiter data for the corresponding semester only

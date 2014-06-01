@@ -73,7 +73,7 @@
               <div class="form-group">
                 <label class="col-md-2">Colores</label>
                 <div class="col-md-10">
-                <select type="text" class="form-control" ng-model="cursos.colorAttribute" ng-options="obj for obj in cursos.colorOptions" ng-change="cursos.updateCurso()">
+                <select type="text" class="form-control" ng-model="cursos.colorAttribute" ng-options="obj.value as obj.label for obj in cursos.colorOptions" ng-change="cursos.updateCurso()">
                 </select>
                 </div>
               </div> <!-- Selector e categorías por colores -->

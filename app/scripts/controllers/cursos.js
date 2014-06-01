@@ -50,7 +50,15 @@
   * @propertyOf fondecytApp.controller:CursosController
   * @returns {array}  colorOptions Listado con opciones de atributo para categorizar por colores
   */
-  this.colorOptions = ['carrera', 'dependencia', 'genero', 'ano_ingreso'];
+  this.colorOptions = [
+    {label:'Genero', value:'genero'},
+    {label:'Dependencia', value:'dependencia'},
+    {label:'Carrera', value:'carrera'},
+    {label:'Area', value:'area'},
+    {label:'Año en la carrera', value:'agnosEnCarrera'}
+  ];
+  this.colorAttribute = 'genero';
+
 
   /**
   * @ngdoc property
@@ -226,6 +234,19 @@ angular.module('fondecytApp')
     return(data);
   };
 
+
+  /**
+   * Initial setting or modification of attributes in  data set 
+   */ 
+  var dataSetupEstudiantes = function(data) {
+    angular.forEach(data, function(d) {
+      if (d.agnosEnCarrera >= 7) {
+        d.agnosEnCarrera = '7 o más'
+      }
+    })
+  }
+
+
   // Initial filter of loaded data
   var startupFilter = function(data) {
     // Filtra sólo datos para cursos con alguna actividad en Sakai y datos válidos de r2
@@ -387,6 +408,7 @@ this.dataCursosPorUnidad = function(filter) {
     } else {
       // Carga de datos (utilizano d3js)  
       d3.tsv(cursosdir+sigla+'.txt', function(error, data) {
+        dataSetupEstudiantes(data);
         dataPorCurso[sigla] = data;
         outdata = _.filter(dataPorCurso[sigla], function(d) {
           return (d.semestre === semestre);
