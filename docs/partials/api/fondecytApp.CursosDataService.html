@@ -1,0 +1,48 @@
+<h1><code ng:non-bindable="">CursosDataService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">fondecytApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="fondecytapp-cursosdataservice-page"><p>Manages data corresponidng to cursos at PUC</p>
+</div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$q">$q</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/d3">d3</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/_">_</a></code>
+</li>
+</ul>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_datacursosporunidad">dataCursosPorUnidad(filter)</h3>
+<div class="datacursosporunidad"><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-datacursosporunidad-page"><p>Retorna una promesa que entregará el listado de unidades a partir de los datos de cursos (que tengan más de minEstudiantesPorCurso)</p>
+</div><h5 id="methods_datacursosporunidad_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>filter</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-datacursosporunidad-page"><p>parametros para filtrar datos de cursos</p>
+</div></td></tr><tr><td>filter.unidad</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-datacursosporunidad-page"><p>Unidad académica a la que pertenece el curso</p>
+</div></td></tr><tr><td>filter.semestre</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-datacursosporunidad-page"><p>Semestre para el cual se requiere el listado de cursos</p>
+</div></td></tr><tr><td>filter.minRecords</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-datacursosporunidad-page"><p>Mínimo número de estudiantes por curso para ser seleccionado</p>
+</div></td></tr></tbody></table><h5 id="methods_datacursosporunidad_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-promise">promise</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-datacursosporunidad-page"><p>promise con los datos de los cursos de la unidad seleccionada</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_dataestudiantesporcurso">dataEstudiantesPorCurso(filter)</h3>
+<div class="dataestudiantesporcurso"><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-dataestudiantesporcurso-page"><p>Retorna una promesa que entregará arreglo de datos para los estudiantes de un curso y semestre dado</p>
+</div><h5 id="methods_dataestudiantesporcurso_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>filter</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-dataestudiantesporcurso-page"><p>parametros para filtrar datos de estudiantes</p>
+</div></td></tr><tr><td>filter.curso</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-dataestudiantesporcurso-page"><p>Curso al que pertenecen los estudiantes</p>
+</div></td></tr><tr><td>filter.semestre</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-dataestudiantesporcurso-page"><p>Semestre para el cual se requieren los datos</p>
+</div></td></tr></tbody></table><h5 id="methods_dataestudiantesporcurso_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-promise">promise</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-dataestudiantesporcurso-page"><p>promise con datos de estudiantes de un curso y semestre específico</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_semestres">semestres()</h3>
+<div class="semestres"><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-semestres-page"><p>Retorna una promesa que entregará el listado de semestres disponibes en el listado de cursos</p>
+</div><h5 id="methods_semestres_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-promise">promise</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-semestres-page"><p>promise con el listado de semestres disponibles en los datos de cursos</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_unidades">unidades(minEstudiantesPorCurso)</h3>
+<div class="unidades"><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-unidades-page"><p>Retorna una promesa que entregará el listado de unidades a partir de los datos de cursos (que tengan más de minEstudiantesPorCurso)</p>
+</div><h5 id="methods_unidades_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>minEstudiantesPorCurso</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-unidades-page"><p>Mínimo número de estudiantes por curso para ser incluido en los datos</p>
+</div></td></tr></tbody></table><h5 id="methods_unidades_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-promise">promise</a></td><td><div class="fondecytapp-cursosdataservice-page fondecytapp-cursosdataservice-unidades-page"><p>promise con el listado de unidades</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>

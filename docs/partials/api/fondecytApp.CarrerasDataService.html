@@ -1,0 +1,35 @@
+<h1><code ng:non-bindable="">CarrerasDataService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">fondecytApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="fondecytapp-carrerasdataservice-page"><p>Manages data corresponidng to carreras at PUC</p>
+</div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$q">$q</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/d3">d3</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/_">_</a></code>
+</li>
+</ul>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_carreras">carreras(maxCarreras)</h3>
+<div class="carreras"><div class="fondecytapp-carrerasdataservice-page fondecytapp-carrerasdataservice-carreras-page"><p>Return a promise that will deliver the array with carreras.
+Select the top number of carreras (maxCarreras) according to the number of records per carrera.  If maxCarreras is undefined, selects all records </p>
+</div><h5 id="methods_carreras_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>maxCarreras</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="fondecytapp-carrerasdataservice-page fondecytapp-carrerasdataservice-carreras-page"><p>Máximum number of data items to return (select the top with more associated records)</p>
+</div></td></tr></tbody></table><h5 id="methods_carreras_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-promise">promise</a></td><td><div class="fondecytapp-carrerasdataservice-page fondecytapp-carrerasdataservice-carreras-page"><p>promise that would return data arary with carerras</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_estudiantesporcarrera">estudiantesPorCarrera(filter)</h3>
+<div class="estudiantesporcarrera"><div class="fondecytapp-carrerasdataservice-page fondecytapp-carrerasdataservice-estudiantesporcarrera-page"><p>Returns an array with data corresponding to students from a given career &amp; semester</p>
+</div><h5 id="methods_estudiantesporcarrera_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>filter</td><td><a href="" class="label type-hint type-hint-objet">objet</a></td><td><div class="fondecytapp-carrerasdataservice-page fondecytapp-carrerasdataservice-estudiantesporcarrera-page"><p>Specification of carrera &amp; semetre for which data is required</p>
+</div></td></tr><tr><td>filter.carrera</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="fondecytapp-carrerasdataservice-page fondecytapp-carrerasdataservice-estudiantesporcarrera-page"><p>Carrera for wich data is required</p>
+</div></td></tr><tr><td>filter.semestre</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="fondecytapp-carrerasdataservice-page fondecytapp-carrerasdataservice-estudiantesporcarrera-page"><p>Semester (period) for wich data is required</p>
+</div></td></tr></tbody></table><h5 id="methods_estudiantesporcarrera_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-promise">promise</a></td><td><div class="fondecytapp-carrerasdataservice-page fondecytapp-carrerasdataservice-estudiantesporcarrera-page"><p>promise that would return data arary with data</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,72 @@
+<h1><code ng:non-bindable="">CursosController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">fondecytApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-page"><p>Controller for Cursos explorer</p>
+</div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$scope">$scope</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/fondecytApp.CursosDataService">CursosDataService</a></code>
+</li>
+</ul>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_updatecursosporunidaddata">updateCursosPorUnidadData()</h3>
+<div class="updatecursosporunidaddata"><div class="fondecytapp-carrerascontroller-page fondecytapp-carrerascontroller-updatecursosporunidaddata-page"><p>Updates the data for all the courses corresponing to the selected unit &amp; semester</p>
+</div></div>
+</li>
+<li><h3 id="methods_updateestudiantesporcursodata">updateEstudiantesPorCursodata()</h3>
+<div class="updateestudiantesporcursodata"><div class="fondecytapp-carrerascontroller-page fondecytapp-carrerascontroller-updateestudiantesporcursodata-page"><p>Updates the data corresponing to all the students from a particular course &amp; semester</p>
+</div></div>
+</li>
+<li><h3 id="methods_updatesemestre">updateSemestre()</h3>
+<div class="updatesemestre"><div class="fondecytapp-carrerascontroller-page fondecytapp-carrerascontroller-updatesemestre-page"><p>Actualiza selección datos de cursos &amp; estudiantes por curso (utilizado luego de un cambio en la selección de semestre)</p>
+</div></div>
+</li>
+<li><h3 id="methods_updateunidadesdata">updateUnidadesData()</h3>
+<div class="updateunidadesdata"><div class="fondecytapp-carrerascontroller-page fondecytapp-carrerascontroller-updateunidadesdata-page"><p>Updates the list of valid academic units (unidades academicas).
+Once updated, will assign the first unit to selectedUnidad and will update the data for all the courses in that unit.</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_colorattribute">colorAttribute</h3>
+<div class="colorattribute"><h5 id="properties_colorattribute_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-colorattribute-page"><p>colorAttribute atributo seleccionado para categorizar por colores</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="properties_coloroptions">colorOptions</h3>
+<div class="coloroptions"><h5 id="properties_coloroptions_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-coloroptions-page"><p>colorOptions Listado con opciones de atributo para categorizar por colores</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="properties_cursosporunidaddata">cursosPorUnidadData</h3>
+<div class="cursosporunidaddata"><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-cursosporunidaddata-page"><p>Cada registro es un objecto que contiene información agregada por curso (r2, promedio_sakai, ...)</p>
+</div><h5 id="properties_cursosporunidaddata_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-cursosporunidaddata-page"><p>Datos correspondientes a los cursos de la unidad seleccionada</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="properties_estudiantesporcursodata">estudiantesPorCursoData</h3>
+<div class="estudiantesporcursodata"><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-estudiantesporcursodata-page"><p>Cada registro es un objecto que contiene información detallada de cada estudiante (actividades_sakai, prom_notas, ...)</p>
+</div><h5 id="properties_estudiantesporcursodata_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-estudiantesporcursodata-page"><p>Datos correspondientes a los estudiantes del curso seleccionado</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="properties_minestudiantesporcurso">minEstudiantesPorCurso</h3>
+<div class="minestudiantesporcurso"><h5 id="properties_minestudiantesporcurso_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-minestudiantesporcurso-page"><p>Define el número mínimo de estudiantes por curso a ser seleccionado</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="properties_selectedsemestre">selectedSemestre</h3>
+<div class="selectedsemestre"><h5 id="properties_selectedsemestre_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-selectedsemestre-page"><p>Semestre seleccionado</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="properties_semestres">semestres</h3>
+<div class="semestres"><h5 id="properties_semestres_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-semestres-page"><p>Lista con los semestres disponibles para ser seleccionados</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="properties_unidades">unidades</h3>
+<div class="unidades"><h5 id="properties_unidades_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="fondecytapp-controller-page fondecytapp-controller-cursoscontroller-unidades-page"><p>Lista con las unidades académicas disponibles para ser seleccionadas</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>
