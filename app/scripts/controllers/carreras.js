@@ -28,16 +28,16 @@
 angular.module('fondecytApp')
 .controller('CarrerasController', ['$scope','CarrerasDataService',function ($scope, dataService) {
 
-  this.tooltipMessage = function(d) {
+   this.tooltipMessage = function(d) {
     var msg = '';
     msg += 'Genero: ' + d.genero + '<br>';
     msg += 'Dependencia: ' + d.dependencia + '<br>';
+    msg += 'Carrera: '+d.carrera + ' ('+d.agnosEnCarrera+' año)<br>';
     msg += 'Actividades Aleph: '+d['actividades_aleph'] +'<br>';
-    msg += 'Actividades EZProxy: '+d.actividades_ezproxy +'<br>';
+    msg += 'Actividades EZProxy: '+ (+d.actividades_ezproxy) +'<br>';
     msg += 'Actividades Sakai: '+d.actividades_sakai +'<br>';
-    msg += 'Promedio notas: '+d.prom_notas +'<br>';
+    msg += 'Promedio notas: '+(+d.promedio_notas).toFixed(2) +'<br>';
     msg += 'Promedio PSU: '+d.prom_paa +'<br>';
-
 
     return msg;
   };

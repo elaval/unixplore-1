@@ -19,12 +19,12 @@
   this.tooltipMessage = function(d) {
     var msg = '';
     msg += 'Unidad: ' + d.unidad + '<br>';
-    msg += 'Sigla: ' + d.sigla + '<br>';
+    msg += 'Curso: ' + d.sigla + '<br>';
     msg += 'Número de estudiantes: ' + d.n + '<br>';
-    msg += 'Promedio Act. Sakai: '+d.promedio_sakai +'<br>';
-    msg += 'Promedio Notas: '+d.promedio_notas +'<br>';
-    msg += 'Pendiente: '+d.slope +'<br>';
-    msg += 'R2: '+d.r2 +'%<br>';
+    msg += 'Promedio Act. Sakai: '+(+d.promedio_sakai).toFixed(2) +'<br>';
+    msg += 'Promedio Notas: '+(+d.promedio_notas).toFixed(2) +'<br>';
+    msg += 'Pendiente: '+(+d.slope).toFixed(4) +'<br>';
+    msg += 'R2: '+(+d.r2).toFixed(2) +'%<br>';
 
 
     return msg;
@@ -32,17 +32,19 @@
 
   this.tooltipMessageCurso = function(d) {
     var msg = '';
-    msg += 'Sigla: ' + d.sigla + '<br>';
+    msg += 'Curso: ' + d.sigla + '<br>';
     msg += 'Promedio Act. Sakai: '+d.actividades_sakai +'<br>';
-    msg += 'Promedio Notas: '+d.nota_final +'<br>';
+    msg += 'Promedio Notas: '+(+d.nota_final).toFixed(2) +'<br>';
     msg += 'Dependencia: '+d.dependencia +'<br>';
     msg += 'Género: '+d.genero +'<br>';
-    msg += 'Carrera: '+d.carrera +'<br>';
+    msg += 'Carrera: '+d.carrera +' ('+d.agnosEnCarrera+' año)<br>';
     msg += 'Unidad: '+d.unidad +'<br>';
 
 
     return msg;
   };
+
+
 
   /**
   * @ngdoc property

@@ -17,23 +17,13 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/carreras.html',
-        controller: 'CarrerasController',
+        templateUrl: 'views/areas.html',
+        controller: 'AreasController',
         controllerAs: 'controller'
       })
       .when('/areas', {
         templateUrl: 'views/areas.html',
         controller: 'AreasController',
-        controllerAs: 'controller'
-      })
-      .when('/carreras', {
-        templateUrl: 'views/carreras.html',
-        controller: 'CarrerasController',
-        controllerAs: 'controller'
-      })
-      .when('/cursos', {
-        templateUrl: 'views/cursos.html',
-        controller: 'CursosController',
         controllerAs: 'controller'
       })
       .otherwise({

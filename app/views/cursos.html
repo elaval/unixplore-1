@@ -14,7 +14,7 @@
               <div class="form-group">
                 <label class="col-md-2" >Unidad</label>
                 <div class="col-md-10">
-                  <select type="text" class="form-control col-md-10" ng-model="cursos.selectedUnidad" ng-options="obj.name as obj.name for obj in cursos.unidades  | orderBy:'name'" ng-change="cursos.updateCursosPorUnidadData()">
+                  <select type="text" class="form-control col-md-10" ng-model="controller.selectedUnidad" ng-options="obj.name as obj.name for obj in controller.unidades  | orderBy:'name'" ng-change="controller.updateCursosPorUnidadData()">
                   </select>              
                 </div>
 
@@ -24,7 +24,7 @@
               <div class="form-group">
                 <label class="col-md-2">Semestre</label>
                 <div class="col-md-10">
-                  <select type="text" class="form-control" ng-model="cursos.selectedSemestre" ng-options="obj for obj in cursos.semestres" ng-change="cursos.updateSemestre()">
+                  <select type="text" class="form-control" ng-model="controller.selectedSemestre" ng-options="obj for obj in controller.semestres" ng-change="controller.updateSemestre()">
                   </select>
                 </div>
               </div><!-- Selector de unidades -->
@@ -37,7 +37,7 @@
 
             <!-- Gráfico  promedio_sakai v/s r2 - cursos -->
             <div class="row">
-              <div td-xy-chart class="col-md-12" td-data="cursos.cursosPorUnidadData" td-xattribute="'r2'" td-yattribute="'promedio_sakai'" td-size-attribute="'n'" td-color-attribute="cursos.colorAttribute" td-id-attribute="'sigla'" td-tooltip-message="cursos.tooltipMessage" td-min-size="5" td-max-size="20"  td-width="300"  td-trendline="false" td-selected="cursos.selectedCurso">
+              <div td-xy-chart class="col-md-12" td-data="controller.cursosPorUnidadData" td-xattribute="'r2'" td-yattribute="'promedio_sakai'" td-size-attribute="'n'" td-color-attribute="controller.colorAttribute" td-id-attribute="'sigla'" td-tooltip-message="controller.tooltipMessage" td-min-size="5" td-max-size="20"  td-width="300"  td-trendline="false" td-selected="controller.selectedCurso">
               </div>
             </div> <!-- Gráfico  promedio_sakai v/s r2 - cursos -->
 
@@ -46,7 +46,7 @@
               <div class="col-md-12">
                 Notas: <br>
                 (i) Cada burbuja corresponde a un curso<br>
-                (ii) Se despliegan solo cursos con mas de {{cursos.minEstudiantesPorCurso}} estudiantes <br>
+                (ii) Se despliegan solo cursos con mas de {{controller.minEstudiantesPorCurso}} estudiantes <br>
                 (iii) r2 indica cuan bien se ajustan los datos de los estudiantes (notas v/s actividades en sakai) a un modelo de regresion lineal.<br>
                 (iv) El tamaño de la burbuja se relaciona con la cantidad de estudiantes por curso<br>
                 (v) Hacer clic sobre una curso para ver la distribución de sus estudiantes<br>
@@ -66,14 +66,14 @@
               <!-- Identificador de curso -->
               <div class="form-group">
                 <label class="col-md-2">Curso</label>
-                <div class="col-md-10">{{cursos.selectedCurso.sigla}}</div>
+                <div class="col-md-10">{{controller.selectedCurso.sigla}}</div>
               </div><!-- Identificador de curso -->
 
               <!-- Selector e categorías por colores -->
               <div class="form-group">
                 <label class="col-md-2">Colores</label>
                 <div class="col-md-10">
-                <select type="text" class="form-control" ng-model="cursos.colorAttribute" ng-options="obj.value as obj.label for obj in cursos.colorOptions" ng-change="cursos.updateCurso()">
+                <select type="text" class="form-control" ng-model="controller.colorAttribute" ng-options="obj.value as obj.label for obj in controller.colorOptions" ng-change="controller.updateCurso()">
                 </select>
                 </div>
               </div> <!-- Selector e categorías por colores -->
@@ -84,14 +84,14 @@
 
             <!-- Grafico sakai - estudiantes -->
             <div class="row">
-              <div td-xy-chart class="col-md-12" td-data="cursos.estudiantesPorCursoData" td-yattribute="'nota_final'" td-xattribute="'actividades_sakai'"  td-sqr-scale-x="cursos.sqrScaleX" td-tooltip-message="cursos.tooltipMessageCurso" td-max-size="3" td-color-attribute="cursos.colorAttribute" td-id-attribute="'id'" td-highlight="cursos.highlightedRecord2" td-width="250"  td-trendline="true" td-selected="cursos.selectedEstudiante" td-color-legend="cursos.estudiantesLegend">
+              <div td-xy-chart class="col-md-12" td-data="controller.estudiantesPorCursoData" td-yattribute="'nota_final'" td-xattribute="'actividades_sakai'"  td-sqr-scale-x="controller.sqrScaleX" td-tooltip-message="controller.tooltipMessageCurso" td-max-size="3" td-color-attribute="controller.colorAttribute" td-id-attribute="'id'" td-highlight="controller.highlightedRecord2" td-width="250"  td-trendline="true" td-selected="controller.selectedEstudiante" td-color-legend="controller.estudiantesLegend">
               </div>
             </div><!-- Grafico sakai - estudiantes -->
 
             <!-- legend -->
             <div class="row text-center">
               <div class="col-md-offset-1 col-md-11">
-                <div class="row text-left" ng-repeat="code in cursos.estudiantesLegend">
+                <div class="row text-left" ng-repeat="code in controller.estudiantesLegend">
                   <span style="font-size:10px; padding-left:10px; background-color:{{code.color}};">&nbsp;</span>&nbsp;{{code.key}} ({{code.n}})
                 </div>
               </div>
@@ -99,7 +99,7 @@
 
             <!-- n -->
             <div class="row">
-              <div class="col-md-offset-2 col-md-10" ng-show="cursos.estudiantesPorCursoData.length">{{cursos.estudiantesPorCursoData.length}} estudiantes</div>
+              <div class="col-md-offset-2 col-md-10" ng-show="controller.estudiantesPorCursoData.length">{{controller.estudiantesPorCursoData.length}} estudiantes</div>
             </div><!-- n -->
 
             <div class="panel-body">

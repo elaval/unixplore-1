@@ -12,7 +12,7 @@
             <div class="form-group">
               <label for="exampleInputEmail1" class="col-md-3 control-label">Semestre</label>
               <div class="col-md-9">
-                <select type="text" class="form-control" ng-model="areas.selectedSemestre" ng-options="obj for obj in areas.semestres" ng-change="areas.updateStudentData()">
+                <select type="text" class="form-control" ng-model="controller.selectedSemestre" ng-options="obj for obj in controller.semestres" ng-change="controller.updateStudentData()">
                 </select>
               </div>
             </div> <!-- Selector de semestre -->
@@ -21,7 +21,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label">Area</label>
               <div class="col-md-9">
-                <select type="text" class="form-control" ng-model="areas.selectedArea" ng-options="obj.name as obj.name for obj in areas.areas  | orderBy:'name'" ng-change="areas.updateStudentData()">
+                <select type="text" class="form-control" ng-model="controller.selectedArea" ng-options="obj.name as obj.name for obj in controller.areas  | orderBy:'name'" ng-change="controller.updateStudentData()">
                 </select>
               </div>
             </div> <!-- Selector de area -->
@@ -38,7 +38,7 @@
             <div class="form-group">
               <label class="col-md-7 control-label">Año en la carrera</label>
               <div class="col-md-5">
-                <select type="text" class="form-control" ng-model="areas.agnoIngreso" ng-options="obj.value as obj.label for obj in areas.agnoIngresoOptions" ng-change="areas.updateStudentData()">
+                <select type="text" class="form-control" ng-model="controller.agnoIngreso" ng-options="obj.value as obj.label for obj in controller.agnoIngresoOptions" ng-change="controller.updateStudentData()">
                 </select>
               </div>
             </div> <!-- Selector de categorías (colores) -->
@@ -47,7 +47,7 @@
             <div class="form-group">
               <label class="col-md-7 control-label">Dependencia escolar</label>
               <div class="col-md-5">
-                <select type="text" class="form-control" ng-model="areas.dependenciaSelected" ng-options="obj for obj in areas.dependenciaOptions" ng-change="areas.updateStudentData()">
+                <select type="text" class="form-control" ng-model="controller.dependenciaSelected" ng-options="obj for obj in controller.dependenciaOptions" ng-change="controller.updateStudentData()">
                 </select>
               </div>
             </div> <!-- Selector de dependencia -->
@@ -56,7 +56,7 @@
             <div class="form-group">
               <label class="col-md-7 control-label">Genero</label>
               <div class="col-md-5">
-                <select type="text" class="form-control" ng-model="areas.generoSelected" ng-options="obj.value as obj.label for obj in areas.generoOptions" ng-change="areas.updateStudentData()">
+                <select type="text" class="form-control" ng-model="controller.generoSelected" ng-options="obj.value as obj.label for obj in controller.generoOptions" ng-change="controller.updateStudentData()">
                 </select>
               </div>
             </div> <!-- Selector de dependencia -->
@@ -71,7 +71,7 @@
             <div class="form-group">
               <label class="col-md-7 control-label">Colores por</label>
               <div class="col-md-5">
-                <select type="text" class="form-control" ng-model="areas.colorAttribute" ng-options="obj.value as obj.label for obj in areas.colorOptions">
+                <select type="text" class="form-control" ng-model="controller.colorAttribute" ng-options="obj.value as obj.label for obj in controller.colorOptions">
                 </select>
               </div>
             </div> <!-- Selector de categorías (colores) -->
@@ -93,12 +93,12 @@
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading"> 
-            <h3>Aleph <span class="label label-info" ng-show="areas.loading">cargando</span><span class="label label-info" ng-show="areas.alephDrawing">redibujando</span> </h3>
+            <h3>Aleph <span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.alephDrawing">redibujando</span> </h3>
           </div>
           <div class="panel-body">
              <div class="row">
               <div class="col-md-12">
-                 <div td-xy-chart class="col-md-12" td-data="areas.data" td-xattribute="'actividades_aleph'" td-yattribute="'prom_notas'" td-tooltip-message="areas.tooltipMessage" td-max-size="3" td-color-attribute="areas.colorAttribute" td-selected="areas.highlightedRecord" td-width="150" td-trendline="true" td-color-legend="areas.carrerasLegend"  td-drawing="areas.alephDrawing">
+                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="'actividades_aleph'" td-yattribute="'prom_notas'" td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-color-legend="controller.carrerasLegend"  td-drawing="controller.alephDrawing">
                 </div>
               </div>
             </div>
@@ -110,12 +110,12 @@
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading"> 
-            <h3>Ezproxy <span class="label label-info" ng-show="areas.loading">cargando</span><span class="label label-info" ng-show="areas.ezproxyDrawing">redibujando</span></h3>
+            <h3>Ezproxy <span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.ezproxyDrawing">redibujando</span></h3>
           </div>
           <div class="panel-body">
              <div class="row">
               <div class="col-md-12">
-                 <div td-xy-chart class="col-md-12" td-data="areas.data" td-xattribute="'actividades_ezproxy'" td-yattribute="'prom_notas'" td-tooltip-message="areas.tooltipMessage" td-max-size="3" td-color-attribute="areas.colorAttribute" td-selected="areas.highlightedRecord" td-width="150" td-trendline="true" td-drawing="areas.ezproxyDrawing">
+                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="'actividades_ezproxy'" td-yattribute="'prom_notas'" td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-drawing="controller.ezproxyDrawing">
                 </div>
               </div>
             </div>
@@ -127,12 +127,12 @@
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading"> 
-            <h3>Sakai <span class="label label-info" ng-show="areas.loading">cargando</span></span><span class="label label-info" ng-show="areas.sakaiDrawing">redibujando</span></h3>
+            <h3>Sakai <span class="label label-info" ng-show="controller.loading">cargando</span></span><span class="label label-info" ng-show="controller.sakaiDrawing">redibujando</span></h3>
           </div>
           <div class="panel-body">
              <div class="row">
               <div class="col-md-12">
-                 <div td-xy-chart class="col-md-12" td-data="areas.data" td-xattribute="'actividades_sakai'" td-yattribute="'prom_notas'"  td-tooltip-message="areas.tooltipMessage" td-max-size="3" td-color-attribute="areas.colorAttribute" td-selected="areas.highlightedRecord" td-width="150" td-trendline="true" td-drawing="areas.sakaiDrawing">
+                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="'actividades_sakai'" td-yattribute="'prom_notas'"  td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-drawing="controller.sakaiDrawing">
                 </div>
               </div>
             </div>
@@ -145,12 +145,12 @@
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading"> 
-            <h3>PSU <span class="label label-info" ng-show="areas.loading">cargando</span><span class="label label-info" ng-show="areas.psuDrawing">redibujando</span></h3>
+            <h3>PSU <span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.psuDrawing">redibujando</span></h3>
           </div>
           <div class="panel-body">
              <div class="row">
               <div class="col-md-12">
-                 <div td-xy-chart class="col-md-12" td-data="areas.psudata" td-xattribute="'prom_paa'" td-yattribute="'prom_notas'" td-sqr-scale-x="areas.sqrScaleX" td-tooltip-message="areas.tooltipMessage" td-max-size="3" td-color-attribute="areas.colorAttribute" td-selected="areas.highlightedRecord" td-width="150" td-trendline="true" td-drawing="areas.psuDrawing">
+                 <div td-xy-chart class="col-md-12" td-data="controller.psudata" td-xattribute="'prom_paa'" td-yattribute="'prom_notas'" td-sqr-scale-x="controller.sqrScaleX" td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-drawing="controller.psuDrawing">
                 </div>
               </div>
             </div>
@@ -164,7 +164,7 @@
     <!-- legend -->
     <div class="row text-center">
       <div class="col-md-offset-1 col-md-11">
-        <div class="row text-left" ng-repeat="code in areas.carrerasLegend">
+        <div class="row text-left" ng-repeat="code in controller.carrerasLegend">
           <span style="font-size:10px; padding-left:10px; background-color:{{code.color}};">&nbsp;</span>&nbsp;{{code.key}} ({{code.n}})
         </div>
       </div>
@@ -172,8 +172,8 @@
 
     <!-- n -->
     <div class="row">
-      <div class="col-md-12" ng-show="areas.data.length">
-        n= {{areas.data.length}} estudiantes
+      <div class="col-md-12" ng-show="controller.data.length">
+        n= {{controller.data.length}} estudiantes
       </div>
     </div><!-- n -->
 
