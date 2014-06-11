@@ -61,6 +61,17 @@
   ];
   this.colorAttribute = 'genero';
 
+ // Opciones para tipo de actividad en Aleph
+  this.sakaiActivityOptions = [
+    {label:'Todas', value:'actividades_sakai'},
+    {label:'Contenido', value:'actividades_sakai_contenido'},
+    {label:'Leer', value:'actividades_sakai_leer'},
+    {label:'Escribir', value:'actividades_sakai_escribir'},
+    {label:'Personal', value:'actividades_sakai_personal'},
+    {label:'Información', value:'actividades_sakai_informacion'},
+    {label:'Test', value:'actividades_sakai_test'}
+  ];
+  this.sakaiActivity = this.sakaiActivityOptions[0];
 
   /**
   * @ngdoc property

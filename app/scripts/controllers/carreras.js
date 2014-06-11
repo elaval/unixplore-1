@@ -42,6 +42,13 @@ angular.module('fondecytApp')
     return msg;
   };
 
+  this.testData = [{genero:"M"}, {genero:"F"}];
+
+  this.testFilter = function(d) {
+
+      return d.genero == "M";
+
+  }
  
 
   // Opciones para categorización pro colores
@@ -51,6 +58,28 @@ angular.module('fondecytApp')
     {label:'Año en la carrera', value:'agnosEnCarrera'}
   ];
   this.colorAttribute = 'genero';
+
+ // Opciones para tipo de actividad en Aleph
+  this.alephActivityOptions = [
+    {label:'Todas', value:'actividades_aleph'},
+    {label:'Digital', value:'actividades_aleph_digital'},
+    {label:'Impreso', value:'actividades_aleph_impreso'},
+    {label:'Espacio', value:'actividades_aleph_espacio'}
+  ];
+  this.alephActivity = this.alephActivityOptions[0];
+
+ // Opciones para tipo de actividad en Aleph
+  this.sakaiActivityOptions = [
+    {label:'Todas', value:'actividades_sakai'},
+    {label:'Contenido', value:'actividades_sakai_contenido'},
+    {label:'Leer', value:'actividades_sakai_leer'},
+    {label:'Escribir', value:'actividades_sakai_escribir'},
+    {label:'Personal', value:'actividades_sakai_personal'},
+    {label:'Información', value:'actividades_sakai_informacion'},
+    {label:'Test', value:'actividades_sakai_test'}
+  ];
+  this.sakaiActivity = this.sakaiActivityOptions[0];
+
 
    this.agnoIngresoOptions = [
     {label:'Todos', value:'todos'},
@@ -73,7 +102,7 @@ angular.module('fondecytApp')
 
 
   // Opciones de semestres
-  this.semestres = ['2012 (I)','2012 (II)','2013 (I)'];
+  this.semestres = ['2012 (II)','2013 (I)'];
   this.selectedSemestre = '2013 (I)';
 
   // Opciones de semestres
@@ -108,7 +137,7 @@ angular.module('fondecytApp')
   this.minEstudiantesPorCarrera = 150;
 
   // Flag para filtrar carreras más numerosas
-  this.mostrarTodasLasCarreras = false;
+  this.mostrarTodasLasCarreras = true;
 
   // Lista de carreras
   this.carreras = [];

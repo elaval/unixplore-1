@@ -26,13 +26,13 @@
 
 
 
-            <!-- Opción para listar todas las carreras -->
+            <!-- Opción para excluir estudiantes sin actividad -->
             <div class="form-group">
-              <label class="col-md-7 control-label">Listar todas las carreras</label>
-              <div class="col-md-5">
-                <input ng-model="controller.mostrarTodasLasCarreras" type="checkbox" ng-change="controller.updateCarreras()"></input>
-              </div>
-            </div><!-- Opción para listar todas las carreras -->
+              <label class="col-md-12 control-label"> 
+                Excluir estudiantes sin actividades
+                <input ng-model="controller.excludeZeroActivity" type="checkbox"></input>
+              </label>
+            </div><!-- Opción para exckuir estudiantes sin actividad -->
 
  
         </form> <!-- Selectores - Columna 1 -->
@@ -66,6 +66,8 @@
                 </select>
               </div>
             </div> <!-- Selector de dependencia -->
+
+
  
         </form> <!-- Selectores - Columna 2 -->
 
@@ -81,9 +83,23 @@
               </div>
             </div> <!-- Selector de categorías (colores) -->
 
+            <!-- Selector de campo para Aleph -->
+            <div class="form-group">
+              <label class="col-md-7 control-label">Tipo Actividad Aleph</label>
+              <div class="col-md-5">
+                <select type="text" class="form-control" ng-model="controller.alephActivity" ng-options="obj as obj.label for obj in controller.alephActivityOptions">
+                </select>
+              </div>
+            </div> <!-- Selector de campo para Aleph -->
 
-
- 
+            <!-- Selector de campo para Sakai -->
+            <div class="form-group">
+              <label class="col-md-7 control-label">Tipo Actividad Sakai</label>
+              <div class="col-md-5">
+                <select type="text" class="form-control" ng-model="controller.sakaiActivity" ng-options="obj as obj.label for obj in controller.sakaiActivityOptions">
+                </select>
+              </div>
+            </div> <!-- Selector actividad Sakai -->
  
         </form> <!-- Selectores - Columna 3-->
 
@@ -99,51 +115,85 @@
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading"> 
-            <h3>Aleph <span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.alephDrawing">redibujando</span> </h3>
+            <h3><span  ng-hide="controller.alephDrawing || controller.loading">Aleph<span ng-hide="controller.alephActivity.value=='actividades_aleph'"> - {{controller.alephActivity.label}}</span></span><span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.alephDrawing">redibujando</span>  </h3>
           </div>
           <div class="panel-body">
              <div class="row">
               <div class="col-md-12">
-                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="'actividades_aleph'" td-yattribute="'promedio_notas'" td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-color-legend="controller.carrerasLegend" td-drawing="controller.alephDrawing">
+                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="controller.alephActivity.value" td-yattribute="'promedio_notas'" td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-color-legend="controller.alephLegend" td-drawing="controller.alephDrawing" td-exclude-zero-x="controller.excludeZeroActivity">
                 </div>
               </div>
             </div>
           </div>
+          <div class="panel-footer"> 
+            <div class="row"> 
+              <div class="col-md-offset-1 col-md-11">
+                <div class="row text-left" ng-repeat="code in controller.alephLegend">
+                  <span style="font-size:10px; padding-left:10px; background-color:{{code.color}};">&nbsp;</span>&nbsp;{{code.key}} ({{code.n}})
+                </div>
+              </div>
+            </div>
+            <div ng-show="controller.excludeZeroActivity">Se excluyen estudiantes sin actividades en Aleph</div>
+          </div>
         </div>
+
+
       </div><!-- aleph -->
 
       <!-- Gráfico ezproxy -->
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading"> 
-            <h3>Ezproxy <span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.ezproxyDrawing">redibujando</span> </h3>
+            <h3><span  ng-hide="controller.ezproxyDrawing || controller.loading">Ezproxy</span><span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.ezproxyDrawing">redibujando</span> </h3>
           </div>
           <div class="panel-body">
              <div class="row">
               <div class="col-md-12">
-                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="'actividades_ezproxy'" td-yattribute="'promedio_notas'" td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-drawing="controller.ezproxyDrawing">
+                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="'actividades_ezproxy'" td-yattribute="'promedio_notas'" td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-drawing="controller.ezproxyDrawing" td-color-legend="controller.ezproxyLegend" td-exclude-zero-x="controller.excludeZeroActivity">
                 </div>
               </div>
             </div>
           </div>
+          <div class="panel-footer"> 
+            <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+              <div class="row text-left" ng-repeat="code in controller.ezproxyLegend">
+                <span style="font-size:10px; padding-left:10px; background-color:{{code.color}};">&nbsp;</span>&nbsp;{{code.key}} ({{code.n}})
+              </div>
+            </div>
+            </div>
+            <div ng-show="controller.excludeZeroActivity">Se excluyen estudiantes sin actividades en Ezproxy</div>
+          </div>
         </div>
+
       </div><!-- ezproxy -->
 
       <!-- Gráfico sakai -->
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading"> 
-            <h3>Sakai <span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.sakaiDrawing">redibujando</span> </h3>
+            <h3><span ng-hide="controller.sakaiDrawing || controller.loading">Sakai<span ng-hide="controller.sakaiActivity.value=='actividades_sakai'"> - {{controller.sakaiActivity.label}}</span></span><span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.sakaiDrawing">redibujando</span> </h3>
           </div>
           <div class="panel-body">
              <div class="row">
               <div class="col-md-12">
-                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="'actividades_sakai'" td-yattribute="'promedio_notas'"  td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-drawing="controller.sakaiDrawing">
+                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="controller.sakaiActivity.value" td-yattribute="'promedio_notas'"  td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-drawing="controller.sakaiDrawing" td-color-legend="controller.sakaiLegend" td-exclude-zero-x="controller.excludeZeroActivity">
                 </div>
               </div>
             </div>
           </div>
+          <div class="panel-footer"> 
+            <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+              <div class="row text-left" ng-repeat="code in controller.sakaiLegend">
+                <span style="font-size:10px; padding-left:10px; background-color:{{code.color}};">&nbsp;</span>&nbsp;{{code.key}} ({{code.n}})
+              </div>
+            </div>
+            </div>
+            <div ng-show="controller.excludeZeroActivity">Se excluyen estudiantes sin actividades en Sakai</div>
+          </div>
         </div>
+
       </div><!-- sakai -->
 
 
@@ -151,15 +201,25 @@
       <div class="col-md-3">
         <div class="panel panel-default">
           <div class="panel-heading"> 
-            <h3>PSU <span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.psuDrawing">redibujando</span> </h3>
+            <h3><span  ng-hide="controller.psuDrawing || controller.loading">PSU</span><span class="label label-info" ng-show="controller.loading">cargando</span><span class="label label-info" ng-show="controller.psuDrawing">redibujando</span> </h3>
           </div>
           <div class="panel-body">
              <div class="row">
               <div class="col-md-12">
-                 <div td-xy-chart class="col-md-12" td-data="controller.psudata" td-xattribute="'prom_paa'" td-yattribute="'promedio_notas'" td-sqr-scale-x="controller.sqrScaleX" td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-drawing="controller.psuDrawing">
+                 <div td-xy-chart class="col-md-12" td-data="controller.data" td-xattribute="'prom_paa'" td-yattribute="'promedio_notas'" td-sqr-scale-x="controller.sqrScaleX" td-tooltip-message="controller.tooltipMessage" td-max-size="3" td-color-attribute="controller.colorAttribute" td-selected="controller.highlightedRecord" td-width="150" td-trendline="true" td-drawing="controller.psuDrawing" td-color-legend="controller.psuLegend" td-exclude-zero-x="true">
                 </div>
               </div>
             </div>
+          </div>
+          <div class="panel-footer"> 
+            <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+              <div class="row text-left" ng-repeat="code in controller.psuLegend">
+                <span style="font-size:10px; padding-left:10px; background-color:{{code.color}};">&nbsp;</span>&nbsp;{{code.key}} ({{code.n}})
+              </div>
+            </div>
+            </div>
+            Se excluyen estudiantes sin puntaje en PSU
           </div>
         </div>
 
@@ -167,15 +227,6 @@
 
     </div> <!-- main -->
 
-
-    <!-- legend -->
-    <div class="row text-center">
-      <div class="col-md-offset-1 col-md-11">
-        <div class="row text-left" ng-repeat="code in controller.carrerasLegend">
-          <span style="font-size:10px; padding-left:10px; background-color:{{code.color}};">&nbsp;</span>&nbsp;{{code.key}} ({{code.n}})
-        </div>
-      </div>
-    </div><!-- legend -->
 
     <!-- n -->
     <div class="row">
@@ -188,9 +239,7 @@
     <div class="row">
       <div class="col-md-12">
         Notas: <br>
-        (i)  En gráfico de PSU sólo se inlcuyen estudiantes con PSU válida (puntaje > 0)<br>
-        (ii) Hacer clic sobre un estudiante, este se selecciona en todos los gráficos<br>
-        (iii) Por defecto se listan sólo las carreras con 50 o más estudiantes en promedio.
+        (i) Hacer clic sobre un estudiante, este se selecciona en todos los gráficos<br>
       </div>
     </div><!-- notas -->
 

@@ -50,6 +50,28 @@ angular.module('fondecytApp')
   ];
   this.colorAttribute = 'genero';
 
+  // Opciones para tipo de actividad en Aleph
+  this.alephActivityOptions = [
+    {label:'Todas', value:'actividades_aleph'},
+    {label:'Digital', value:'actividades_aleph_digital'},
+    {label:'Impreso', value:'actividades_aleph_impreso'},
+    {label:'Espacio', value:'actividades_aleph_espacio'}
+  ];
+  this.alephActivity = this.alephActivityOptions[0];
+
+ // Opciones para tipo de actividad en Aleph
+  this.sakaiActivityOptions = [
+    {label:'Todas', value:'actividades_sakai'},
+    {label:'Contenido', value:'actividades_sakai_contenido'},
+    {label:'Leer', value:'actividades_sakai_leer'},
+    {label:'Escribir', value:'actividades_sakai_escribir'},
+    {label:'Personal', value:'actividades_sakai_personal'},
+    {label:'Información', value:'actividades_sakai_informacion'},
+    {label:'Test', value:'actividades_sakai_test'}
+  ];
+  
+  this.sakaiActivity = this.sakaiActivityOptions[0];
+
   this.agnoIngresoOptions = [
     {label:'Todos', value:'todos'},
     {label:'1er año ', value:'1'},

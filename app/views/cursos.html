@@ -4,7 +4,7 @@
     <div class="row main">
 
       <!-- cursos por unidad -->
-      <div class="col-md-7">
+      <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading"> 
             <h3>Cursos por unidad</h3>
@@ -57,26 +57,29 @@
       </div><!-- cursos por unidad -->
 
       <!-- estudiantes por curso -->
-      <div class="col-md-5">
+      <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3>Estudiantes por curso</h3>
+            <h3>Estudiantes por curso <span ng-show="controller.selectedCurso.sigla">({{controller.selectedCurso.sigla}})</span></h3>
             <form role="form" class="form-horizontal">
-
-              <!-- Identificador de curso -->
-              <div class="form-group">
-                <label class="col-md-2">Curso</label>
-                <div class="col-md-10">{{controller.selectedCurso.sigla}}</div>
-              </div><!-- Identificador de curso -->
 
               <!-- Selector e categorías por colores -->
               <div class="form-group">
-                <label class="col-md-2">Colores</label>
-                <div class="col-md-10">
+                <label class="col-md-6 control-label">Colores</label>
+                <div class="col-md-6">
                 <select type="text" class="form-control" ng-model="controller.colorAttribute" ng-options="obj.value as obj.label for obj in controller.colorOptions" ng-change="controller.updateCurso()">
                 </select>
                 </div>
               </div> <!-- Selector e categorías por colores -->
+
+              <!-- Selector de campo para Sakai -->
+              <div class="form-group">
+                <label class="col-md-6 control-label">Tipo Actividad Sakai</label>
+                <div class="col-md-6">
+                  <select type="text" class="form-control" ng-model="controller.sakaiActivity" ng-options="obj as obj.label for obj in controller.sakaiActivityOptions">
+                  </select>
+                </div>
+              </div> <!-- Selector actividad Sakai -->
 
             </form>
           </div>
@@ -84,7 +87,7 @@
 
             <!-- Grafico sakai - estudiantes -->
             <div class="row">
-              <div td-xy-chart class="col-md-12" td-data="controller.estudiantesPorCursoData" td-yattribute="'nota_final'" td-xattribute="'actividades_sakai'"  td-sqr-scale-x="controller.sqrScaleX" td-tooltip-message="controller.tooltipMessageCurso" td-max-size="3" td-color-attribute="controller.colorAttribute" td-id-attribute="'id'" td-highlight="controller.highlightedRecord2" td-width="250"  td-trendline="true" td-selected="controller.selectedEstudiante" td-color-legend="controller.estudiantesLegend">
+              <div td-xy-chart class="col-md-12" td-data="controller.estudiantesPorCursoData" td-yattribute="'nota_final'" td-xattribute="controller.sakaiActivity.value"  td-sqr-scale-x="controller.sqrScaleX" td-tooltip-message="controller.tooltipMessageCurso" td-max-size="3" td-color-attribute="controller.colorAttribute" td-id-attribute="'id'" td-highlight="controller.highlightedRecord2" td-width="300"  td-trendline="true" td-selected="controller.selectedEstudiante" td-color-legend="controller.estudiantesLegend">
               </div>
             </div><!-- Grafico sakai - estudiantes -->
 
